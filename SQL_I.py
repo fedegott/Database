@@ -3,6 +3,8 @@
 
 
 #VCS --> import into VCS --> create Git Repository
+# manually reate reposiry in github using same name as porject
+# VCS commit, paste the repository URL
 
 # Python code to demonstrate table creation and insertions with SQL. run first part, then comment it and run 2nd part.
 
