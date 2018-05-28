@@ -33,8 +33,13 @@ import sqlite3
 # sql_command = """INSERT INTO emp VALUES (23, "Rishabh", "Bansal", "M", "2014-03-28");"""
 # crsr.execute(sql_command)
 #
-# # another SQL command to insert the data in the table
-# sql_command = """INSERT INTO emp VALUES (1, "Bill", "Gates", "M", "1980-10-28");"""
+# # another SQL command to insert the data iconnection n the table
+# sql_command = """INSERT INTO emp VALUES (1, "Bill", "Gates", "M", "1980-10-28");""" # --> can use ? as placeholder as cursor.execute('''INSERT INTO users(name, phone, email, password)
+#                                                                                                                       VALUES(?,?,?,?)''', (name2,phone2, email2, password2)) here passing the values
+#                                                                                                        a tuple or can pass the values as dictionary --> cursor.execute('''INSERT INTO users(name, phone, email, password)
+#                                                                                                                                                            VALUES(:name,:phone, :email, :password)''',
+#                                                                                                                                                           {'name':name1, 'phone':phone1, 'email':email1, 'password':password1})
+
 # crsr.execute(sql_command)
 #
 # # To save the changes in the files. Never skip this.
@@ -60,7 +65,15 @@ connection = sqlite3.connect("myTable.db")
 crsr = connection.cursor()
 
 # execute the command to fetch all the data from the table emp
-crsr.execute("SELECT * FROM emp")
+crsr.execute("SELECT * FROM emp") #--> to retrieve data execute from cursor. use fecthone() or fetchall()
+
+# cursor.execute('''SELECT name, email, phone FROM users''')
+# user1 = cursor.fetchone() #retrieve the first row
+# all_rows = cursor.fetchall()
+# To retrieve data with conditions, use again the "?" placeholder:
+#     cursor.execute('''SELECT name, email, phone FROM users WHERE id=?''', (user_id,))
+#     user = cursor.fetchone()
+
 
 # store all the fetched data in the ans variable
 ans = crsr.fetchall()
